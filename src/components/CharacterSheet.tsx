@@ -14,13 +14,13 @@ export default function CharacterSheet({ onClose }: { onClose: () => void }) {
       <motion.div 
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="w-full max-w-2xl bg-slate-900 border-2 border-gold-600 rounded-xl overflow-hidden shadow-2xl flex flex-col"
+        className="w-full max-w-2xl bg-slate-900 border-2 border-gold-600 rounded-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
       >
         {/* Header */}
-        <div className="p-6 bg-slate-950 border-b border-gold-600/30 flex justify-between items-center">
+        <div className="p-4 md:p-6 bg-slate-950 border-b border-gold-600/30 flex justify-between items-center shrink-0">
           <div>
-            <h2 className="text-3xl font-serif text-gold-400">{playerStats.name}</h2>
-            <p className="text-slate-400 text-sm">{playerStats.role} - Level {playerStats.level}</p>
+            <h2 className="text-2xl md:text-3xl font-serif text-gold-400">{playerStats.name}</h2>
+            <p className="text-slate-400 text-xs md:text-sm">{playerStats.role} - Level {playerStats.level}</p>
           </div>
           <button onClick={onClose} className="text-slate-400 hover:text-white transition-colors">
             <X size={24} />
@@ -28,11 +28,11 @@ export default function CharacterSheet({ onClose }: { onClose: () => void }) {
         </div>
 
         {/* Content */}
-        <div className="p-8 grid grid-cols-2 gap-12">
+        <div className="p-4 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 overflow-y-auto custom-scrollbar">
           
           {/* Left Column: Avatar & XP */}
-          <div className="space-y-6">
-            <div className="aspect-[3/4] bg-slate-800 rounded-lg relative overflow-hidden border border-slate-700">
+          <div className="space-y-4 md:space-y-6">
+            <div className="aspect-[3/4] bg-slate-800 rounded-lg relative overflow-hidden border border-slate-700 w-1/2 md:w-full mx-auto md:mx-0">
                {/* Placeholder for Avatar if image fails or is just a path */}
                <div className="absolute inset-0 flex items-center justify-center text-slate-600">
                  [Character Avatar]
@@ -59,19 +59,19 @@ export default function CharacterSheet({ onClose }: { onClose: () => void }) {
           </div>
 
           {/* Right Column: Stats */}
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8">
             <div className="space-y-4">
               <h3 className="text-xl font-serif text-slate-200 border-b border-slate-800 pb-2">Attributes</h3>
               
-              <div className="space-y-4">
+              <div className="space-y-3 md:space-y-4">
                 {/* Attack */}
                 <div className="flex items-center justify-between bg-slate-800/50 p-3 rounded-lg border border-slate-700">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-red-950/50 rounded text-red-400"><Sword size={18} /></div>
-                    <span className="text-slate-300">Attack Power</span>
+                    <span className="text-slate-300 text-sm md:text-base">Attack Power</span>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="text-xl font-bold text-white">{playerStats.attackPower}</span>
+                    <span className="text-lg md:text-xl font-bold text-white">{playerStats.attackPower}</span>
                     {playerStats.statPoints > 0 && (
                       <button 
                         onClick={() => spendStatPoint('attackPower')}
@@ -87,10 +87,10 @@ export default function CharacterSheet({ onClose }: { onClose: () => void }) {
                 <div className="flex items-center justify-between bg-slate-800/50 p-3 rounded-lg border border-slate-700">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-blue-950/50 rounded text-blue-400"><Shield size={18} /></div>
-                    <span className="text-slate-300">Defense</span>
+                    <span className="text-slate-300 text-sm md:text-base">Defense</span>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="text-xl font-bold text-white">{playerStats.defense}</span>
+                    <span className="text-lg md:text-xl font-bold text-white">{playerStats.defense}</span>
                     {playerStats.statPoints > 0 && (
                       <button 
                         onClick={() => spendStatPoint('defense')}
@@ -106,10 +106,10 @@ export default function CharacterSheet({ onClose }: { onClose: () => void }) {
                 <div className="flex items-center justify-between bg-slate-800/50 p-3 rounded-lg border border-slate-700">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-green-950/50 rounded text-green-400"><Heart size={18} /></div>
-                    <span className="text-slate-300">Max HP</span>
+                    <span className="text-slate-300 text-sm md:text-base">Max HP</span>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="text-xl font-bold text-white">{playerStats.maxHP}</span>
+                    <span className="text-lg md:text-xl font-bold text-white">{playerStats.maxHP}</span>
                     {playerStats.statPoints > 0 && (
                       <button 
                         onClick={() => spendStatPoint('maxHP')}
@@ -127,7 +127,7 @@ export default function CharacterSheet({ onClose }: { onClose: () => void }) {
             {playerStats.statPoints > 0 && (
               <div className="p-4 bg-gold-900/20 border border-gold-500/30 rounded-lg flex items-center gap-3">
                 <Zap className="text-gold-400" size={20} />
-                <span className="text-gold-200 font-medium">
+                <span className="text-gold-200 font-medium text-sm md:text-base">
                   {playerStats.statPoints} Stat Points Available
                 </span>
               </div>

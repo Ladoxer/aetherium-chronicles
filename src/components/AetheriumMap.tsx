@@ -65,7 +65,7 @@ export default function AetheriumMap({ onOpenProfile, onOpenInventory }: Aetheri
   };
 
   return (
-    <div className="relative w-full h-[700px] bg-slate-900 rounded-xl overflow-hidden border-4 border-gold-600 shadow-2xl group">
+    <div className="relative w-full h-[500px] md:h-[700px] bg-slate-900 rounded-xl overflow-hidden border-4 border-gold-600 shadow-2xl group">
       {/* Map Background (Sky) */}
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=80&w=2574&auto=format&fit=crop')] bg-cover bg-center opacity-60 grayscale-[30%] sepia-[20%]"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/40 to-slate-950/90"></div>
@@ -74,21 +74,21 @@ export default function AetheriumMap({ onOpenProfile, onOpenInventory }: Aetheri
       <div className="absolute inset-0 bg-[linear-gradient(rgba(184,134,11,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(184,134,11,0.1)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none"></div>
 
       {/* Top Right UI Icons */}
-      <div className="absolute top-6 right-6 z-30 flex gap-4">
+      <div className="absolute top-4 right-4 md:top-6 md:right-6 z-30 flex gap-2 md:gap-4">
         <button
           onClick={onOpenProfile}
-          className="p-3 bg-slate-900/80 border border-gold-600/50 rounded-full hover:bg-slate-800 hover:border-gold-500 transition-all shadow-lg group backdrop-blur-sm"
+          className="p-2 md:p-3 bg-slate-900/80 border border-gold-600/50 rounded-full hover:bg-slate-800 hover:border-gold-500 transition-all shadow-lg group backdrop-blur-sm"
           title="Character Sheet"
         >
           {/* We need to import User and Package icons here or pass them as children, but importing is easier */}
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400 group-hover:text-gold-300"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400 group-hover:text-gold-300 md:w-6 md:h-6"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </button>
         <button
           onClick={onOpenInventory}
-          className="p-3 bg-slate-900/80 border border-gold-600/50 rounded-full hover:bg-slate-800 hover:border-gold-500 transition-all shadow-lg group backdrop-blur-sm"
+          className="p-2 md:p-3 bg-slate-900/80 border border-gold-600/50 rounded-full hover:bg-slate-800 hover:border-gold-500 transition-all shadow-lg group backdrop-blur-sm"
           title="Inventory"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400 group-hover:text-gold-300"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22v-10"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gold-400 group-hover:text-gold-300 md:w-6 md:h-6"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22v-10"/></svg>
         </button>
       </div>
 
@@ -114,9 +114,9 @@ export default function AetheriumMap({ onOpenProfile, onOpenInventory }: Aetheri
             className={`
               absolute transform -translate-x-1/2 -translate-y-1/2
               flex flex-col items-center justify-center
-              transition-all duration-500
+              transition-all duration-500 scale-75 md:scale-100
               ${isTraveling ? "cursor-wait opacity-50 grayscale" : "cursor-pointer"}
-              ${isCurrent ? "z-20 scale-110" : "z-10 opacity-90 hover:opacity-100 hover:scale-105"}
+              ${isCurrent ? "z-20 scale-90 md:scale-110" : "z-10 opacity-90 hover:opacity-100 hover:scale-105"}
             `}
             style={{ left: `${island.x}%`, top: `${island.y}%` }}
           >
@@ -148,7 +148,7 @@ export default function AetheriumMap({ onOpenProfile, onOpenInventory }: Aetheri
                 : "bg-slate-900/60 border-slate-600 text-slate-300 group-hover:border-gold-500/50"
               }
             `}>
-              <span className="text-xs font-bold uppercase tracking-wider whitespace-nowrap">
+              <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider whitespace-nowrap">
                 {island.name}
               </span>
             </div>
@@ -163,7 +163,7 @@ export default function AetheriumMap({ onOpenProfile, onOpenInventory }: Aetheri
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="absolute bottom-6 right-6 w-80 bg-slate-900/95 border border-gold-600 rounded-lg p-6 shadow-2xl backdrop-blur-xl z-40"
+            className="absolute bottom-0 left-0 right-0 md:bottom-6 md:left-auto md:right-6 w-full md:w-80 bg-slate-900/95 border-t-2 md:border border-gold-600 md:rounded-lg p-6 shadow-2xl backdrop-blur-xl z-40"
           >
             <div className="flex justify-between items-start mb-4">
               <h3 className="text-xl font-serif text-gold-400">{selectedIsland.name}</h3>
@@ -223,10 +223,10 @@ export default function AetheriumMap({ onOpenProfile, onOpenInventory }: Aetheri
       </AnimatePresence>
       
       {/* HUD / Status */}
-      <div className="absolute bottom-6 left-6 bg-slate-950/90 p-4 rounded-lg border border-gold-600/50 text-gold-100 shadow-xl backdrop-blur-md flex items-center gap-6 z-30">
-        <div>
-          <div className="text-xs text-slate-400 uppercase tracking-widest mb-1">Current Location</div>
-          <div className="text-xl font-serif text-gold-500 flex items-center gap-2">
+      <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-auto md:w-auto bg-slate-950/90 p-3 md:p-4 rounded-lg border border-gold-600/50 text-gold-100 shadow-xl backdrop-blur-md flex flex-col md:flex-row items-center gap-3 md:gap-6 z-30">
+        <div className="w-full md:w-auto flex justify-between md:block items-center">
+          <div className="text-[10px] md:text-xs text-slate-400 uppercase tracking-widest mb-1">Current Location</div>
+          <div className="text-sm md:text-xl font-serif text-gold-500 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"/>
             {currentIsland}
           </div>
@@ -242,7 +242,7 @@ export default function AetheriumMap({ onOpenProfile, onOpenInventory }: Aetheri
             const event = new CustomEvent('START_COMBAT', { detail: { enemy: randomEnemy } });
             window.dispatchEvent(event);
           }}
-          className="px-4 py-2 bg-red-900/50 border border-red-500 text-red-200 rounded hover:bg-red-800/50 transition-colors text-sm font-bold uppercase tracking-wider"
+          className="w-full md:w-auto px-4 py-2 bg-red-900/50 border border-red-500 text-red-200 rounded hover:bg-red-800/50 transition-colors text-xs md:text-sm font-bold uppercase tracking-wider"
         >
           Engage Enemy
         </button>

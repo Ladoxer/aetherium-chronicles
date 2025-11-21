@@ -126,8 +126,7 @@ function GameContent() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-8 bg-slate-950 text-slate-200 relative">
-
+    <main className="flex min-h-screen flex-col items-center justify-between p-4 md:p-8 bg-slate-950 text-slate-200 relative">
 
 
       {/* Modals */}
@@ -144,18 +143,18 @@ function GameContent() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className="z-10 w-full max-w-6xl flex flex-col items-center gap-12"
+            className="z-10 w-full max-w-6xl flex flex-col items-center gap-8 md:gap-12"
           >
-            <div className="text-center space-y-4">
-              <h1 className="text-6xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-b from-gold-300 to-amber-700 drop-shadow-lg">
+            <div className="text-center space-y-4 mt-8 md:mt-0">
+              <h1 className="text-4xl md:text-6xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-b from-gold-300 to-amber-700 drop-shadow-lg px-2">
                 Chronicles of the Aetherium Spires
               </h1>
-              <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto px-4">
                 Select your champion and ascend the floating realms.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full px-2 md:px-0">
               {characters.map((char) => (
                 <motion.div
                   key={char.id}
@@ -211,7 +210,7 @@ function GameContent() {
             </div>
 
             {/* Start Button */}
-            <div className="h-24 flex items-center justify-center">
+            <div className="h-24 flex items-center justify-center w-full px-4">
               <AnimatePresence>
                 {selectedCharId && (
                   <motion.button
@@ -220,17 +219,17 @@ function GameContent() {
                     exit={{ opacity: 0, y: 10 }}
                     onClick={handleStartAdventure}
                     className="
-                      group relative px-16 py-5
+                      group relative w-full md:w-auto px-8 md:px-16 py-5
                       bg-gradient-to-r from-amber-900 to-slate-900
                       border border-gold-500
-                      text-gold-100 font-serif text-xl tracking-[0.2em] uppercase
+                      text-gold-100 font-serif text-lg md:text-xl tracking-[0.2em] uppercase
                       hover:shadow-[0_0_30px_rgba(184,134,11,0.6)]
                       active:scale-95
                       transition-all duration-300
                       overflow-hidden rounded-sm
                     "
                   >
-                    <span className="relative z-10 flex items-center gap-3">
+                    <span className="relative z-10 flex items-center justify-center gap-3">
                       Start Adventure
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </span>
@@ -249,9 +248,9 @@ function GameContent() {
             transition={{ duration: 0.8 }}
             className="w-full max-w-6xl"
           >
-            <div className="text-center mb-8 space-y-2">
-              <h2 className="text-4xl font-serif text-gold-500 drop-shadow-md">The Aetherium Spires</h2>
-              <p className="text-slate-400">Navigate the floating islands to begin your quest.</p>
+            <div className="text-center mb-4 md:mb-8 space-y-2 mt-4 md:mt-0">
+              <h2 className="text-3xl md:text-4xl font-serif text-gold-500 drop-shadow-md">The Aetherium Spires</h2>
+              <p className="text-sm md:text-base text-slate-400">Navigate the floating islands to begin your quest.</p>
             </div>
             <AetheriumMap 
               onOpenProfile={() => setShowCharacterSheet(true)} 
